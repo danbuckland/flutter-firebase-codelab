@@ -1,4 +1,4 @@
-package com.yourcompany.friendlychat;
+package io.danb.friendlychat;
 
 import android.os.Bundle;
 
