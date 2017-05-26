@@ -3,8 +3,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'dart:async';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 final googleSignIn = new GoogleSignIn();
+final analytics = new FirebaseAnalytics();
 
 void main() {
   runApp(new FriendlychatApp());
@@ -90,6 +92,7 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     if (user == null) {
       await googleSignIn.signIn();
     }
+    analytics.logLogin();
   }
 
   Future<Null> _handleSubmitted(String text) async {
@@ -113,6 +116,7 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
       _messages.insert(0, message);
     });
     message.animationController.forward();
+    analytics.logEvent(name: 'send_message');
   }
 
   void dispose() {
