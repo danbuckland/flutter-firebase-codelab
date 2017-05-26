@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'dart:async';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 final googleSignIn = new GoogleSignIn();
 final analytics = new FirebaseAnalytics();
+final auth = FirebaseAuth.instance;
 
 void main() {
   runApp(new FriendlychatApp());
@@ -91,8 +93,16 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
       user = await googleSignIn.signInSilently();
     if (user == null) {
       await googleSignIn.signIn();
+      analytics.logLogin();
     }
-    analytics.logLogin();
+    if (auth.currentUser == null) {
+      GoogleSignInAuthentication credentials =
+      await googleSignIn.currentUser.authentication;
+      await auth.signInWithGoogle(
+          idToken: credentials.idToken,
+          accessToken: credentials.accessToken,
+      );
+    }
   }
 
   Future<Null> _handleSubmitted(String text) async {
