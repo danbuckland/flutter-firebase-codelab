@@ -12,6 +12,10 @@
     <string>com.googleusercontent.apps.REDACTED</string>
                 <string>io.danb.friendlychat</string>
              </array>
+             <key>NSCameraUsageDescription</key>
+             <string>Share images with other chat users</string>
+             <key>NSPhotoLibraryUsageDescription</key>
+             <string>Share images with other chat users</string>
           </dict>
       </array>
 	<key>CFBundleDevelopmentRegion</key>
