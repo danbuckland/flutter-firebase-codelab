@@ -9,7 +9,7 @@
              <string>Editor</string>
              <key>CFBundleURLSchemes</key>
              <array>
-    <string>com.googleusercontent.apps.REDACTED</string>
+                <string>com.googleusercontent.apps.1048626948537-0vq82huod9oom4ki646qrrrieta18qjt</string>
                 <string>io.danb.friendlychat</string>
              </array>
              <key>NSCameraUsageDescription</key>
@@ -61,5 +61,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>Access to Photos is required to be able to share images.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>This app requires access to the camera.</string>
 </dict>
 </plist>
