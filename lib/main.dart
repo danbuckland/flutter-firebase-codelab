@@ -78,7 +78,7 @@ class ChatMessage extends StatelessWidget {
                     child: snapshot.value['imageUrl'] != null ?
                       new Image.network(
                       snapshot.value['imageUrl'],
-                      width: 250,
+                      width: 250.0,
                       ) :
                   new Text(snapshot.value['text']),
                 ),
