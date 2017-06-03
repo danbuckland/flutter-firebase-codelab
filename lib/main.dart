@@ -53,6 +53,14 @@ class ChatMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget message = new Text(
+        snapshot.value['text'],
+        softWrap: true,
+    );
+    Widget image = new Image.network(
+      snapshot.value['imageUrl'] != null ? snapshot.value['imageUrl'] : 'https://www.gstatic.com/mobilesdk/160503_mobilesdk/logo/2x/firebase_28dp.png',
+      width: 250.0,
+    );
     return new SizeTransition(
       sizeFactor: new CurvedAnimation(
         parent: animation, curve: Curves.easeOut
@@ -74,13 +82,8 @@ class ChatMessage extends StatelessWidget {
                     snapshot.value['senderName'],
                     style: Theme.of(context).textTheme.subhead),
                 new Container(
-                  margin: const EdgeInsets.only(top: 5.0),
-                    child: snapshot.value['imageUrl'] != null ?
-                      new Image.network(
-                      snapshot.value['imageUrl'],
-                      width: 250.0,
-                      ) :
-                  new Text(snapshot.value['text']),
+                    margin: const EdgeInsets.only(top: 5.0),
+                    child: snapshot.value['imageUrl'] != null ? image : message,
                 ),
               ],
             ),
