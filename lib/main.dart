@@ -82,6 +82,7 @@ class ChatMessage extends StatelessWidget {
                     snapshot.value['senderName'],
                     style: Theme.of(context).textTheme.subhead),
                 new Container(
+                    width: 300.0,
                     margin: const EdgeInsets.only(top: 5.0),
                     child: snapshot.value['imageUrl'] != null ? image : message,
                 ),
@@ -201,7 +202,7 @@ class ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Friendlychat"),
+        title: new Text("Chat"),
         elevation:
             Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0
       ),
